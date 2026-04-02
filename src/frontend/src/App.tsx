@@ -964,6 +964,27 @@ function Slide7() {
 }
 
 function Slide8() {
+  const ambitions = [
+    {
+      icon: "⚖️",
+      title: "The Lawyer",
+      line: "Fight for truth. Win every battle.",
+      delay: 0.7,
+    },
+    {
+      icon: "🏛️",
+      title: "The IAS Officer",
+      line: "Serve the nation. Lead with grace.",
+      delay: 0.95,
+    },
+  ];
+
+  const inspoLines = [
+    { text: "The courtroom will bow to you", delay: 1.2 },
+    { text: "The nation will rise with you", delay: 1.4 },
+    { text: "You are built to rule, Rithi", delay: 1.6 },
+  ];
+
   return (
     <>
       <SideBalloons />
@@ -972,126 +993,217 @@ function Slide8() {
       <FloatingHearts active />
       <Sparkles active />
       <SlideWrapper visible>
-        <div style={{ textAlign: "center", zIndex: 10, position: "relative" }}>
-          {/* Star burst at top */}
+        <div
+          style={{
+            textAlign: "center",
+            zIndex: 10,
+            position: "relative",
+            maxWidth: "640px",
+            width: "100%",
+          }}
+        >
+          {/* Gold crown + stars top row */}
           <div
             style={{
-              fontSize: "clamp(2.5rem, 6vw, 4rem)",
-              animation: "sparkle 1.2s ease-in-out infinite",
-              marginBottom: "0.5rem",
-              display: "block",
+              display: "flex",
+              justifyContent: "center",
+              gap: "0.5rem",
+              marginBottom: "0.4rem",
+              animation: "fadeSlideUp 0.8s 0.1s ease-out both",
             }}
           >
-            🎂
+            {[
+              { e: "🌟", k: "star-left" },
+              { e: "👑", k: "crown" },
+              { e: "🌟", k: "star-right" },
+            ].map(({ e, k }, i) => (
+              <span
+                key={k}
+                style={{
+                  fontSize: "clamp(1.4rem, 3.5vw, 2.2rem)",
+                  animation: `sparkle 1.5s ${i * 0.3}s ease-in-out infinite`,
+                }}
+              >
+                {e}
+              </span>
+            ))}
           </div>
 
-          {/* Forever Yours label */}
+          {/* Title */}
           <p
             style={{
               fontFamily: "'Poppins', sans-serif",
-              fontSize: "clamp(0.7rem, 1.8vw, 0.95rem)",
-              color: "#CFCFD4",
+              fontSize: "clamp(0.65rem, 1.6vw, 0.9rem)",
+              color: "#FFD700",
               letterSpacing: "0.5em",
               textTransform: "uppercase",
               animation: "fadeSlideUp 0.8s 0.2s ease-out both",
-              marginBottom: "0.3rem",
+              marginBottom: "0.2rem",
             }}
           >
-            ✦ Forever Yours ✦
+            ✦ Your Dreams Are Waiting ✦
           </p>
 
-          {/* Big glowing RITHI */}
+          {/* Big RITHI */}
           <div
             style={{
               fontFamily: "'Dancing Script', cursive",
-              fontSize: "clamp(4.5rem, 16vw, 11rem)",
+              fontSize: "clamp(3.5rem, 12vw, 8rem)",
               fontWeight: 700,
-              color: "#F4F2F2",
+              background:
+                "linear-gradient(135deg, #C61A22 30%, #FFD700 60%, #C61A22 90%)",
+              backgroundSize: "200% auto",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
               animation:
-                "glowPulse 2s ease-in-out infinite, fadeSlideUp 0.8s 0.4s ease-out both",
+                "shimmer 2.5s linear infinite, fadeSlideUp 0.8s 0.35s ease-out both",
               lineHeight: 1,
-              marginBottom: "0.3rem",
-              textShadow:
-                "0 0 40px rgba(198,26,34,0.9), 0 0 80px rgba(198,26,34,0.5), 0 0 120px rgba(198,26,34,0.3)",
+              marginBottom: "0.1rem",
+              textShadow: "none",
             }}
           >
             RITHI
           </div>
 
-          {/* Short heartfelt message */}
+          {/* Sub-header */}
           <p
             style={{
               fontFamily: "'Poppins', sans-serif",
-              fontSize: "clamp(0.95rem, 2.5vw, 1.3rem)",
-              color: "#F4F2F2",
-              fontWeight: 300,
-              animation: "fadeSlideUp 0.8s 0.7s ease-out both",
-              margin: "0.5rem 0 0.3rem",
-              letterSpacing: "0.02em",
+              fontSize: "clamp(0.7rem, 1.8vw, 1rem)",
+              color: "#FFD700",
+              letterSpacing: "0.3em",
+              textTransform: "uppercase",
+              fontWeight: 600,
+              animation: "fadeSlideUp 0.8s 0.5s ease-out both",
+              marginBottom: "0.8rem",
             }}
           >
-            You are my forever
+            Born to Lead · Future Star
           </p>
-          <p
+
+          {/* Ambition cards */}
+          <div
             style={{
-              fontFamily: "'Poppins', sans-serif",
-              fontSize: "clamp(0.9rem, 2.2vw, 1.2rem)",
-              color: "#CFCFD4",
-              fontWeight: 300,
-              animation: "fadeSlideUp 0.8s 0.9s ease-out both",
-              margin: "0 0 0.8rem",
-              fontStyle: "italic",
+              display: "grid",
+              gridTemplateColumns: "repeat(2, 1fr)",
+              gap: "0.7rem",
+              marginBottom: "0.9rem",
             }}
           >
-            My soul found its home in you
-          </p>
+            {ambitions.map((a) => (
+              <div
+                key={a.title}
+                style={{
+                  animation: `popIn 0.6s ${a.delay}s ease-out both`,
+                  background:
+                    "linear-gradient(135deg, rgba(255,215,0,0.08), rgba(198,26,34,0.15))",
+                  border: "1px solid rgba(255,215,0,0.35)",
+                  borderRadius: "14px",
+                  padding: "0.8rem 0.7rem",
+                  textAlign: "center",
+                  boxShadow: "0 0 18px rgba(255,215,0,0.1)",
+                }}
+              >
+                <div
+                  style={{
+                    fontSize: "clamp(1.5rem, 4vw, 2.2rem)",
+                    marginBottom: "0.3rem",
+                  }}
+                >
+                  {a.icon}
+                </div>
+                <div
+                  style={{
+                    fontFamily: "'Poppins', sans-serif",
+                    fontSize: "clamp(0.75rem, 2vw, 1rem)",
+                    fontWeight: 700,
+                    color: "#FFD700",
+                    marginBottom: "0.2rem",
+                  }}
+                >
+                  {a.title}
+                </div>
+                <div
+                  style={{
+                    fontFamily: "'Poppins', sans-serif",
+                    fontSize: "clamp(0.65rem, 1.5vw, 0.85rem)",
+                    fontWeight: 300,
+                    color: "#F4F2F2",
+                    fontStyle: "italic",
+                  }}
+                >
+                  {a.line}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Inspirational lines */}
+          <div style={{ marginBottom: "0.7rem" }}>
+            {inspoLines.map(({ text, delay }) => (
+              <p
+                key={text}
+                style={{
+                  fontFamily: "'Poppins', sans-serif",
+                  fontSize: "clamp(0.8rem, 2vw, 1.05rem)",
+                  color: "#F4F2F2",
+                  fontWeight: 300,
+                  animation: `fadeSlideUp 0.8s ${delay}s ease-out both`,
+                  margin: "0.25rem 0",
+                  letterSpacing: "0.01em",
+                }}
+              >
+                {text}
+              </p>
+            ))}
+          </div>
 
           {/* Signature */}
           <p
             style={{
               fontFamily: "'Dancing Script', cursive",
-              fontSize: "clamp(1.3rem, 4vw, 2.2rem)",
+              fontSize: "clamp(1.1rem, 3vw, 1.9rem)",
               color: "#C61A22",
-              animation: "fadeSlideUp 0.8s 1.1s ease-out both",
-              marginBottom: "0.8rem",
+              animation: "fadeSlideUp 0.8s 1.8s ease-out both",
+              marginBottom: "0.3rem",
             }}
           >
-            — AmiRithi
+            — AmiRithi 💛
           </p>
 
           {/* Birthday date */}
           <p
             style={{
               fontFamily: "'Poppins', sans-serif",
-              fontSize: "clamp(0.75rem, 1.8vw, 0.95rem)",
-              color: "rgba(207,207,212,0.6)",
-              letterSpacing: "0.25em",
-              animation: "fadeSlideUp 0.8s 1.3s ease-out both",
-              marginBottom: "1rem",
+              fontSize: "clamp(0.65rem, 1.5vw, 0.85rem)",
+              color: "rgba(255,215,0,0.55)",
+              letterSpacing: "0.3em",
+              animation: "fadeSlideUp 0.8s 2s ease-out both",
+              marginBottom: "0.6rem",
             }}
           >
-            Happy Birthday 03 · 04 · 2007
+            03 · 04 · 2007
           </p>
 
-          {/* Heart row */}
+          {/* Bottom emoji row */}
           <div
             style={{
               display: "flex",
               justifyContent: "center",
-              gap: "0.6rem",
-              animation: "fadeSlideUp 0.8s 1.5s ease-out both",
+              gap: "0.7rem",
+              animation: "fadeSlideUp 0.8s 2.2s ease-out both",
             }}
           >
-            {[0, 0.2, 0.4, 0.6, 0.8].map((delay) => (
+            {["⚖️", "🏛️", "👑", "🌟", "💫"].map((emoji, i) => (
               <span
-                key={delay}
+                key={emoji}
                 style={{
-                  color: "#D51E2A",
                   fontSize: "clamp(1.2rem, 3vw, 1.8rem)",
-                  animation: `heartPulse 1.5s ${delay}s ease-in-out infinite`,
+                  animation: `sparkle 1.5s ${i * 0.2}s ease-in-out infinite`,
+                  display: "inline-block",
                 }}
               >
-                ♥
+                {emoji}
               </span>
             ))}
           </div>
